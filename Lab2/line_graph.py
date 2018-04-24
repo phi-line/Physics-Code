@@ -11,11 +11,14 @@ forty_swings = [1.584, 1.585, 1.5815, 1.5865, 1.58575, 1.58925,
 
 constant = [1.58] * 12
 
-plt.plot(interval, ten_swings, color='red')
-plt.plot(interval, twenty_swings, color='orange')
-plt.plot(interval, forty_swings, color='yellow')
+colors = iter(["indianred", "darkorange", "gold"])
+
+plt.plot(interval, ten_swings, color=colors.__next__())
+plt.plot(interval, twenty_swings, color=colors.__next__())
+plt.plot(interval, forty_swings, color=colors.__next__())
 plt.plot(interval, constant, color='black')
 
 plt.xlabel('Interval')
 plt.ylabel('Time in seconds')
+plt.grid()
 plt.show()

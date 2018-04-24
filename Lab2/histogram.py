@@ -12,7 +12,7 @@ forty_swings = [1.584, 1.585, 1.5815, 1.5865, 1.58575, 1.58925,
 
 dataset = {"10 swings":ten_swings, "20 swings":twenty_swings, "40 swings":forty_swings}
 
-colors = iter(["red", "orange", "yellow"])
+colors = iter(["indianred", "darkorange", "gold"])
 
 bins = 3
 
@@ -21,13 +21,14 @@ def main():
     plt.ylabel('Probability')
 
     for k,v in dataset.items():
-        plt.hist(v, 'sqrt', facecolor=colors.__next__(), density=1, alpha=0.9, label=k)
+        plt.hist(v, 'sqrt', facecolor=colors.__next__(), density=1, alpha=0.95, label=k)
 
     generateLegend()
+    plt.grid()
     plt.show()
 
 def generateLegend():
-    legend = plt.legend(loc='upper center', shadow=True)
+    legend = plt.legend(loc='upper left', shadow=True)
 
     frame = legend.get_frame()
     frame.set_facecolor('0.90')

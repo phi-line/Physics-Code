@@ -14,7 +14,7 @@ forty_swings = [1.584, 1.585, 1.5815, 1.5865, 1.58575, 1.58925,
 
 dataset = {"10 swings":ten_swings, "20 swings":twenty_swings, "40 swings":forty_swings}
 
-colors = iter(["red", "orange", "yellow"])
+colors = iter(["indianred", "darkorange", "gold"])
 
 bins = 3
 
@@ -25,9 +25,12 @@ def main():
     for k,v in dataset.items():
         density = gaussian_kde(v)
         xs = np.linspace(1.3,1.8,42)
+        density.covariance_factor = lambda : .2
+        density._compute_covariance()
         plt.plot(xs, density(xs), color=colors.__next__(), label=k)
 
     generateLegend()
+    plt.grid()
     plt.show()
 
 def generateLegend():
