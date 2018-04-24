@@ -11,9 +11,9 @@ forty_swings = [1.584, 1.585, 1.5815, 1.5865, 1.58575, 1.58925,
 
 constant = [1.58] * 12
 
-plt.plot(interval, ten_swings, color='cyan')
-plt.plot(interval, twenty_swings, color='green')
-plt.plot(interval, forty_swings, color='purple')
+plt.plot(interval, ten_swings, color='red')
+plt.plot(interval, twenty_swings, color='orange')
+plt.plot(interval, forty_swings, color='yellow')
 plt.plot(interval, constant, color='black')
 
 plt.xlabel('Interval')

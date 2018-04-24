@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 
+from scipy.stats import gaussian_kde
+
 ten_swings = [1.416, 1.591, 1.416, 1.585, 1.426, 1.435, 1.602, 1.558 ,1.609 ,1.581 ,1.59 ,1.498]
 
 twenty_swings = [1.568 ,1.5205 ,1.5865 ,1.574 ,1.5815 ,1.586, 1.5905, 1.5765, 1.598, 1.509, 1.5905, 1.5775]
@@ -18,16 +20,18 @@ bins = 3
 
 def main():
     plt.xlabel('Time in seconds')
-    plt.ylabel('Probability')
+    plt.ylabel('Density')
 
     for k,v in dataset.items():
-        plt.hist(v, 'sqrt', facecolor=colors.__next__(), density=1, alpha=0.9, label=k)
+        density = gaussian_kde(v)
+        xs = np.linspace(1.3,1.8,42)
+        plt.plot(xs, density(xs), color=colors.__next__(), label=k)
 
     generateLegend()
     plt.show()
 
 def generateLegend():
-    legend = plt.legend(loc='upper center', shadow=True)
+    legend = plt.legend(loc='upper left', shadow=True)
 
     frame = legend.get_frame()
     frame.set_facecolor('0.90')
