@@ -24,7 +24,7 @@ def main():
 
     for k,v in dataset.items():
         density = gaussian_kde(v)
-        xs = np.linspace(1.3,1.8,42)
+        xs = np.linspace(1.35,1.65,42)
         density.covariance_factor = lambda : .2
         density._compute_covariance()
         plt.plot(xs, density(xs), color=colors.__next__(), label=k)
